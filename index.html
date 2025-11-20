@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Générateur de mot de passe</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: linear-gradient(135deg, #89CFF0, #FFFFFF); min-height: 100vh;}
+    button { padding: 8px 14px; cursor: pointer; }
+    input { padding: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Générateur de mot de passe</h1>
+
+  <button id="generate">Generate password</button>
+  <br><br>
+  <input id="output" type="text" readonly style="width:300px;">
+
+  <script>
+    // Function to generate a 20 characters password
+    function generatePassword() {
+      const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()~{}[]|\/€§µ";
+      let password = "";
+
+      for (let i = 0; i < 20; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        password += characters[randomIndex];
+      }
+
+      return password;
+    }
+
+    // When we click on the button, it generate a password
+    document.getElementById("generate").addEventListener("click", function() {
+      document.getElementById("output").value = generatePassword();
+    });
+  </script>
+</body>
+</html>
